@@ -4,10 +4,10 @@ from PyPulse import PulseInterface
 import numpy as np
 from PyQt5 import QtWidgets
 
-import Models.Experiment as Experiment
-from Controllers import QueueControl, QueueControl
-from Designs import mainDesign
-from Models import PBWidgets
+import PulseBoy.Models.Experiment as Experiment
+from PulseBoy.Controllers import QueueControl, QueueControl
+from PulseBoy.Designs import mainDesign
+from PulseBoy.Models import PBWidgets
 import pickle as pickle
 import os.path
 

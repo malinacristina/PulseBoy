@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets
 
-from Designs import trialDesign, simpleValveDesign, noiseValveDesign, plumeValveDesign
+from PulseBoy.Designs import trialDesign, simpleValveDesign, noiseValveDesign, plumeValveDesign
 
 
 # TODO - These widgets could inherit from a common PBWidget parent that implements remove_from_parent etc.

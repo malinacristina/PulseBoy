@@ -1,0 +1,12 @@
+Alterations in Maindesign.py
+
+
+
+287	self.digitalOutDevEdit.setText(_translate("MainWindow", "Mod1/port0/line0:21")) 		#cDAQ to valves
+
+290	self.analogInDevEdit.setText(_translate("MainWindow", "Mod2/ai3"))				#channel for trigger? lick channel?
+
+295	self.triggerInEdit.setText(_translate("MainWindow", "Mod2/ai3"))				#channel for 
+296	self.syncClockEdit.setText(_translate("MainWindow", "/cDAQ/ai/SampleClock"))			#channel for sync clock
+
+321	self.exportPathEdit.setText(_translate("MainWindow", "D:/Natural plumes/Trial data/"))		#path to where to save data
