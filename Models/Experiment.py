@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui
 import pickle as pickle
+import random
 
 default_row = [[0, [], '']]
 
@@ -104,5 +105,5 @@ class ExperimentModel(QtCore.QAbstractTableModel):
     def total_trials(self):
         return len(self.arraydata)
 
-
-
+    def randomise_trials(self):
+        random.shuffle(self.arraydata)

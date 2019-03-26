@@ -1,13 +1,22 @@
 import sys
+sys.path.insert(0, "C:\\Users\\warnert\\Documents\\GitHub")
+sys.path.insert(0, "C:\\Users\\warnert\\Documents\\GitHub\\PulseBoy_old")
 
 from PyPulse import PulseInterface
 import numpy as np
 from PyQt5 import QtWidgets
+<<<<<<< HEAD
 
 import PulseBoy.Models.Experiment as Experiment
 from PulseBoy.Controllers import QueueControl, QueueControl
 from PulseBoy.Designs import mainDesign
 from PulseBoy.Models import PBWidgets
+=======
+import Models.Experiment as Experiment
+from Controllers import QueueControl, QueueControl
+from Designs import mainDesign
+from Models import PBWidgets
+>>>>>>> pr/1
 import pickle as pickle
 import os.path
 
@@ -44,6 +53,7 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         self.removeTrialButton.clicked.connect(self.remove_trial)
         self.moveUpButton.clicked.connect(self.move_trial_up)
         self.moveDownButton.clicked.connect(self.move_trial_down)
+        self.randomiseTrialsButton.clicked.connect(self.randomise_trials)
 
         self.actionSave.triggered.connect(self.save)
         self.actionLoad.triggered.connect(self.load)
@@ -59,6 +69,7 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         self.pauseQueueButton.clicked.connect(self.queue_controller.pause)
         self.runSelectedButton.clicked.connect(lambda x: self.queue_controller.run_selected(self.trialBankTable.selectionModel().selectedRows()[0].row()))
 
+
     def add_valve(self, v_type='Simple', params=None):
         if v_type == 'Simple':
             new_valve = PBWidgets.SimpleValveWidget(self.valveBankContents)
@@ -66,6 +77,8 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
             new_valve = PBWidgets.NoiseValveWidget(self.valveBankContents)
         elif v_type == 'Plume':
             new_valve = PBWidgets.PlumeValveWidget(self.valveBankContents)
+        elif v_type == 'Anti Plume':
+            new_valve = PBWidgets.AntiPlumeValveWidget(self.valveBankContents)
         else:
             new_valve = PBWidgets.SimpleValveWidget(self.valveBankContents)
 
@@ -119,6 +132,9 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         self.trialBankModel.move_trial_down(idx)
         if idx < len(self.trialBankModel.arraydata):
             self.select_trial(idx + 1)
+
+    def randomise_trials(self):
+        self.trialBankModel.randomise_trials()
 
     def trial_selected(self):
         try:
